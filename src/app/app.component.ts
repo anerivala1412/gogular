@@ -138,5 +138,4 @@ export class AppComponent implements OnInit {
   private getMapCusotmStyles() {
     // Write your Google Map Custom Style Code Here.
   }
-
 }
