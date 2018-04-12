@@ -47,8 +47,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     //set google maps defaults
     this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    this.latitude = 23.2156;
+    this.longitude = 72.6369;
     //this.iconurl = '../image/map-icon.png';
     this.iconurl = '../image/map-icon.png';
 
