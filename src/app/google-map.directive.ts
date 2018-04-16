@@ -16,7 +16,9 @@ export class DirectionsMapDirective {
     @Input() estimatedTime: any;
     @Input() estimatedDistance: any;
 
-    constructor(private gmapsApi: GoogleMapsAPIWrapper) { }
+    constructor(private gmapsApi: GoogleMapsAPIWrapper) {
+
+    }
     updateDirections() {
         this.gmapsApi.getNativeMap().then(map => {
             if (!this.originPlaceId || !this.destinationPlaceId) {
@@ -40,20 +42,24 @@ export class DirectionsMapDirective {
                 origin: { placeId: this.originPlaceId },
                 destination: { placeId: this.destinationPlaceId },
                 avoidHighways: true,
-                travelMode: google.maps.DirectionsTravelMode.DRIVING
-                //travelMode: 'DRIVING'
-            }, function (response: any, status: any) {
+                travelMode: google.maps.DirectionsTravelMode.DRIVING,
+            }, function callback(response: any, status: any) {
                 if (status === 'OK') {
                     me.directionsDisplay.setDirections(response);
                     var point = response.routes[0].legs[0];
                     me.estimatedTime = point.duration.text;
                     me.estimatedDistance = point.distance.text;
+                    document.getElementById('distance').innerHTML +=
+                        point.distance.text; + " meters";
+                    document.getElementById('duration').innerHTML +=
+                        point.duration.text + " seconds";
+
                 } else {
                     console.log('Directions request failed due to ' + status);
                 }
             });
-        });
-
+        }
+        );
     }
 
     private getcomputeDistance(latLngA: any, latLngB: any) {

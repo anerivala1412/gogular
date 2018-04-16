@@ -100,15 +100,18 @@ export class AppComponent implements OnInit {
         //Update the directions
         this.vc.updateDirections();
         this.zoom = 12;
-      });
-
+      }
+      );
     });
 
   }
 
   getDistanceAndDuration() {
+    this.vc.estimatedDistance;
+    console.log(this.vc.estimatedDistance);
     this.estimatedTime = this.vc.estimatedTime;
     this.estimatedDistance = this.vc.estimatedDistance;
+    console.log(this.estimatedTime);
   }
 
   scrollToBottom(): void {
@@ -133,6 +136,7 @@ export class AppComponent implements OnInit {
         this.zoom = 12;
       });
     }
+    this.getDistanceAndDuration();
   }
 
   private getMapCusotmStyles() {
